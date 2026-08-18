@@ -85,11 +85,11 @@
         }
 
         .home-balance-card {
-            @apply my-2.5 min-h-50 justify-between gap-5 rounded-bl-4xl rounded-tr-4xl bg-accent p-6;
+            @apply my-2.5 min-h-25 justify-between gap-5 rounded-bl-4xl rounded-tr-4xl bg-accent p-6;
         }
 
         .home-balance-label {
-            @apply text-xl font-sans-semibold text-white/80;
+            @apply text-xl font-sans-semibold text-primary;
         }
 
         .home-balance-row {
@@ -97,11 +97,11 @@
         }
 
         .home-balance-amount {
-            @apply text-4xl font-sans-extrabold text-white;
+            @apply text-4xl font-sans-extrabold text-primary;
         }
 
         .home-balance-date {
-            @apply text-xl font-sans-medium text-white;
+            @apply mt-3 text-lg font-sans-semibold text-primary;
         }
 
         .list-head {
