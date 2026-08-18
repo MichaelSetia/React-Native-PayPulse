@@ -1,25 +1,28 @@
 import "@/global.css"
-import { Text } from "react-native";
+import {Image, Text, View} from "react-native";
 import {Link} from "expo-router";
 import {SafeAreaView as RNSafeAreaView} from 'react-native-safe-area-context'
 import {styled} from "nativewind";
+import image from "@/constants/image"
+import {HOME_USER} from "@/constants/data";
+import {icons} from "@/constants/icons";
 
 const SafeAreaView = styled(RNSafeAreaView)
 export default function App() {
     return (
         <SafeAreaView className="flex-1 p-5 bg-background">
-            <Text className="text-xl font-bold text-blue-500">
+            <Text className="text-5xl font-sans-extrabold text-primary">
                 Welcome to Nativewind!
             </Text>
-            <Link href="/onboarding" className="mt-4 rounded bg-primary text-white p-4">
-                Go to onboarding
-            </Link>
-            <Link href="/(auth)/sign-in" className="mt-4 rounded bg-primary text-white p-4">
-                Sign In
-            </Link>
-            <Link href="/(auth)/sign-up" className="mt-4 rounded bg-primary text-white p-4">
-                Sign Up
-            </Link>
+            <View className="home-header p-4 bg-primary corner-rounded">
+                <View className="home-user">
+                    <Image className="home-avatar" source={image.avatar} >
+                    </Image>
+                    <Text className="home-user-name">{HOME_USER.name}</Text>
+                </View>
+                <Image source={icons.add} className="home-add-icon " tintColor="#FFFFFF"></Image>
+            </View>
+
         </SafeAreaView>
     );
 }
