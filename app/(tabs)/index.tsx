@@ -1,21 +1,23 @@
 import "@/global.css"
-import {Image, Text, View} from "react-native";
+import {FlatList, Image, Text, View} from "react-native";
 import {Link} from "expo-router";
 import {SafeAreaView as RNSafeAreaView} from 'react-native-safe-area-context'
 import {styled} from "nativewind";
 import image from "@/constants/image"
-import {HOME_BALANCE, HOME_USER} from "@/constants/data";
+import {HOME_BALANCE, HOME_USER, UPCOMING_SUBSCRIPTIONS} from "@/constants/data";
 import {icons} from "@/constants/icons";
 import {formatCurrency} from "@/lib/utils";
 import dayjs from "dayjs";
+import Listheading from "@/app/components/listheading";
+import Listupcomingsubscriptions from "@/app/components/listupcomingsubscriptions";
 
 const SafeAreaView = styled(RNSafeAreaView)
 export default function App() {
     return (
         <SafeAreaView className="flex-1 p-5 bg-background">
-            <Text className="text-5xl font-sans-extrabold text-primary">
-                Welcome to PayPulse
-            </Text>
+            {/*<Text className="text-5xl font-sans-extrabold text-primary">*/}
+            {/*    Welcome to PayPulse*/}
+            {/*</Text>*/}
             <View className="home-header p-4 bg-primary corner-rounded">
                 <View className="home-user">
                     <Image className="home-avatar" source={image.avatar} >
@@ -40,6 +42,27 @@ export default function App() {
                     </Text>
                 </View>
             </View>
+
+            <View>
+                <Listheading title={'Upcoming'}></Listheading>
+                <FlatList
+                    data={UPCOMING_SUBSCRIPTIONS}
+                    renderItem={({item}) => (
+                        <Listupcomingsubscriptions data={item}></Listupcomingsubscriptions>
+                    )}
+                    keyExtractor={(item) => item.id}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    ListEmptyComponent={<Text className='home-empty-state'>No Upcoming Subscription</Text> }
+                />
+
+            </View>
+
+            <View>
+               <Listheading title={'All Subscriptions'}></Listheading>
+
+            </View>
+
 
         </SafeAreaView>
     );
